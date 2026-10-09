@@ -1,6 +1,6 @@
 # wheat-web
 
-Сайт проекта WheatDDS. Чистая статика, без сборки.
+Сайт проекта WheatDDS (Wheat Decision Support System). Чистая статика, без сборки.
 
 Запуск локально:
 

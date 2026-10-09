@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WheatDDS — локальный DDS-проект</title>
-  <meta name="description" content="WheatDDS — разрабатываемая реализация Data Distribution Service. Сайт проекта: возможности, быстрый старт, архитектура, статус.">
+  <title>WheatDDS — система поддержки принятия решений</title>
+  <meta name="description" content="WheatDDS (Wheat Decision Support System) — система поддержки принятия решений для выращивания пшеницы. Сайт проекта.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="nav">
     <a class="logo" href="#top">🌾 WheatDDS</a>
     <nav>
+      <a href="#about">О проекте</a>
       <a href="#features">Возможности</a>
-      <a href="#arch">Архитектура</a>
-      <a href="#quickstart">Быстрый старт</a>
+      <a href="#arch">Как работает</a>
+      <a href="#quickstart">Запуск</a>
       <a href="#roadmap">Статус</a>
       <button id="theme" aria-label="Сменить тему">◐</button>
     </nav>
@@ -21,55 +22,51 @@
 
   <main id="top">
     <section class="hero">
-      <p class="badge">В разработке · v0.1-dev</p>
-      <h1>Pub/Sub без брокера.<br>Быстро. Локально. Своё.</h1>
-      <p class="lead">WheatDDS — реализация Data Distribution Service: участники находят друг друга сами и обмениваются данными по топикам напрямую, без центрального сервера.</p>
+      <p class="badge">В разработке · локальный проект</p>
+      <h1>Wheat Decision Support System</h1>
+      <p class="lead">Система поддержки принятия решений для выращивания пшеницы: данные по полям, погоде и почве превращаются в понятные рекомендации — что делать, когда и почему.</p>
       <div class="cta">
-        <a class="btn primary" href="#quickstart">Быстрый старт</a>
+        <a class="btn primary" href="#features">Возможности</a>
         <a class="btn" href="#roadmap">Что готово</a>
       </div>
+    </section>
+
+    <section id="about">
+      <h2>О проекте</h2>
+      <p>WheatDDS помогает агроному принимать решения на основе данных, а не интуиции: от выбора сроков сева до уборки. Система не заменяет специалиста — она показывает расчёты, их основания и уровень уверенности.</p>
     </section>
 
     <section id="features">
       <h2>Возможности</h2>
       <div class="grid">
-        <article><h3>Децентрализация</h3><p>Никакого брокера: publisher и subscriber работают peer-to-peer.</p></article>
-        <article><h3>Автообнаружение</h3><p>Участники в домене находят друг друга без ручной настройки.</p></article>
-        <article><h3>QoS</h3><p>Reliability, durability, history, deadline — поведение под задачу.</p></article>
-        <article><h3>Типизированные топики</h3><p>Данные описываются типами, а не сырыми байтами.</p></article>
-        <article><h3>Низкая задержка</h3><p>Минимум копирований и аллокаций на горячем пути.</p></article>
-        <article><h3>Локальная разработка</h3><p>Поднимается на одной машине, удобно отлаживать.</p></article>
+        <article><h3>Учёт полей</h3><p>Участки, культуры, сорта, история обработок и севооборот.</p></article>
+        <article><h3>Погода и почва</h3><p>Метеоданные, влажность, температура, показатели почвы.</p></article>
+        <article><h3>Прогноз урожайности</h3><p>Оценка урожая по фазам развития и текущим условиям.</p></article>
+        <article><h3>Риск болезней и вредителей</h3><p>Предупреждения о рисках и подсказки по срокам обработок.</p></article>
+        <article><h3>Удобрения и полив</h3><p>Рекомендации по нормам и срокам внесения.</p></article>
+        <article><h3>Объяснимость</h3><p>К каждой рекомендации — входные данные и логика вывода.</p></article>
       </div>
     </section>
 
     <section id="arch">
-      <h2>Архитектура</h2>
-      <div class="diagram" role="img" aria-label="Схема: Publisher, DataWriter, Topic, DataReader, Subscriber в одном домене">
-        <div class="node">Publisher<small>DataWriter</small></div>
+      <h2>Как работает</h2>
+      <div class="diagram" role="img" aria-label="Данные, модели, рекомендации, решение агронома">
+        <div class="node">Данные<small>поля · погода · почва</small></div>
         <div class="arrow">→</div>
-        <div class="node topic">Topic<small>Domain&nbsp;0</small></div>
+        <div class="node">Модели<small>прогноз · риски</small></div>
         <div class="arrow">→</div>
-        <div class="node">Subscriber<small>DataReader</small></div>
+        <div class="node topic">Рекомендации<small>с обоснованием</small></div>
+        <div class="arrow">→</div>
+        <div class="node">Агроном<small>принимает решение</small></div>
       </div>
-      <ul class="list">
-        <li><b>DomainParticipant</b> — точка входа в домен.</li>
-        <li><b>Discovery</b> — обмен информацией об участниках и эндпоинтах.</li>
-        <li><b>Transport</b> — доставка данных (UDP / shared memory).</li>
-        <li><b>QoS Engine</b> — применение политик качества сервиса.</li>
-      </ul>
     </section>
 
     <section id="quickstart">
-      <h2>Быстрый старт</h2>
-      <p>Пример публикации (псевдокод — API ещё меняется):</p>
-      <div class="code"><button class="copy" data-target="code1">Копировать</button><pre id="code1"><code>auto dp  = wheat::DomainParticipant(0);
-auto top = dp.create_topic&lt;Hello&gt;("hello");
-auto pub = dp.create_publisher().create_writer(top);
-
-pub.write(Hello{"Привет, пшеница!"});</code></pre></div>
-      <p>Подписка:</p>
-      <div class="code"><button class="copy" data-target="code2">Копировать</button><pre id="code2"><code>auto sub = dp.create_subscriber().create_reader(top);
-sub.on_data([](const Hello&amp; m) { std::cout &lt;&lt; m.text; });</code></pre></div>
+      <h2>Локальный запуск сайта</h2>
+      <div class="code"><button class="copy" data-target="code1">Копировать</button><pre id="code1"><code>git clone https://github.com/KNate42/wheat-web
+cd wheat-web
+python3 -m http.server 8000
+# открыть http://localhost:8000</code></pre></div>
     </section>
 
     <section id="roadmap">
@@ -79,7 +76,7 @@ sub.on_data([](const Hello&amp; m) { std::cout &lt;&lt; m.text; });</code></pre>
     </section>
   </main>
 
-  <footer>© WheatDDS · локальный проект</footer>
+  <footer>© WheatDDS · Wheat Decision Support System</footer>
   <script src="js/main.js"></script>
 </body>
 </html>

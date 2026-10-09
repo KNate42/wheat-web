@@ -1,11 +1,11 @@
 // Статусы: done | wip | todo
 const ROADMAP = [
-  { title: 'DomainParticipant и базовые сущности', status: 'wip' },
-  { title: 'Автообнаружение участников (Discovery)', status: 'wip' },
-  { title: 'Транспорт UDP', status: 'todo' },
-  { title: 'Транспорт shared memory', status: 'todo' },
-  { title: 'QoS: reliability, durability, history', status: 'todo' },
-  { title: 'Генерация типов из IDL', status: 'todo' },
+  { title: 'Модель данных: поля, культуры, сорта', status: 'wip' },
+  { title: 'Импорт погодных и почвенных данных', status: 'wip' },
+  { title: 'Прогноз урожайности', status: 'todo' },
+  { title: 'Оценка рисков болезней и вредителей', status: 'todo' },
+  { title: 'Рекомендации по удобрениям и поливу', status: 'todo' },
+  { title: 'Объяснение рекомендаций', status: 'todo' },
 ];
 const LABEL = { done: 'готово', wip: 'в работе', todo: 'в планах' };
 
