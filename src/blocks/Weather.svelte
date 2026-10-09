@@ -12,10 +12,10 @@
   const line = temp.map((t, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)} ${yT(t).toFixed(1)}`).join(' ');
 </script>
 
-<Block bind:shown span="m" tone="cream" label="Погода и почва">
+<Block bind:shown span="m" tone="cream" label="Условия сезона">
   <div class="wrap" class:on={shown}>
-    <span class="tag">02 · погода и почва</span>
-    <h2>Небо и почва в одном графике</h2>
+    <span class="tag">03 · условия сезона</span>
+    <h2>Прогноз учитывает условия</h2>
     <svg viewBox="0 0 {W} {H}" role="img" aria-label="Пример: температура и осадки за неделю">
       {#each rain as r, i}
         <rect class="bar" style:--d="{0.2 + i * 0.08}s" x={x(i) - 9} y={H - 26 - r * 3} width="18" height={r * 3 + 0.01} rx="4" />
@@ -29,7 +29,8 @@
         <text class="day" x={x(i)} y={H - 6}>{days[i]}</text>
       {/each}
     </svg>
-    <p class="muted"><i class="k gold"></i>температура <i class="k plum"></i>осадки, мм · пример данных</p>
+    <p class="muted">Рост зависит от погоды: например, от температуры и осадков.</p>
+    <p class="muted small"><i class="k gold"></i>температура <i class="k plum"></i>осадки, мм · пример данных</p>
   </div>
 </Block>
 
@@ -45,6 +46,7 @@
   .pt circle { fill: var(--cream); stroke: var(--gold); stroke-width: 3; }
   text { font: 700 11px 'Manrope', sans-serif; fill: var(--plum); text-anchor: middle; }
   .day { opacity: .6; }
+  .small { font-size: .85rem; }
   .k { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin: 0 4px 0 10px; vertical-align: middle; }
   .k:first-child { margin-left: 0; }
   .k.gold { background: var(--gold); } .k.plum { background: var(--plum-soft); border: 1px solid var(--plum-2); }

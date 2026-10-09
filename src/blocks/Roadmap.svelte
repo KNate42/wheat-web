@@ -4,10 +4,10 @@
   let shown = $state(false);
 </script>
 
-<Block bind:shown span="m" tone="plum" id="roadmap" label="Статус разработки">
+<Block bind:shown span="l" tone="plum" id="roadmap" label="Статус разработки">
   <div class="wrap" class:on={shown}>
-    <span class="tag">07 · статус</span>
-    <h2>Что уже растёт</h2>
+    <span class="tag">06 · статус</span>
+    <h2>План разработки</h2>
     <ul>
       {#each ROADMAP as r, i}
         <li class={r.status} style:--i={i} style:--p="{r.progress}%">

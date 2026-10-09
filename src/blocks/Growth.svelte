@@ -4,10 +4,10 @@
   const phases = ['Сев', 'Всходы', 'Кущение', 'Трубка', 'Колошение', 'Созревание'];
 </script>
 
-<Block bind:shown span="m" tone="plum" label="Прогноз урожая по фазам">
+<Block bind:shown span="m" tone="plum" label="Фазы развития">
   <div class="wrap" class:on={shown}>
-    <span class="tag">03 · прогноз урожая</span>
-    <h2>От сева до уборки — по фазам</h2>
+    <span class="tag">02 · фазы развития</span>
+    <h2>Каждая фаза — с датой</h2>
     <div class="row">
       {#each phases as p, i}
         <div class="ph" style:--i={i} style:--h="{12 + i * 16}%">
@@ -23,7 +23,7 @@
       {/each}
       <span class="track"></span>
     </div>
-    <p class="muted">Оценка урожая уточняется на каждой фазе развития по текущим условиям.</p>
+    <p class="muted">Прогноз показывает, когда сорт войдёт в каждую фазу — от сева до созревания.</p>
   </div>
 </Block>
 

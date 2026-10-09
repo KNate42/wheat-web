@@ -1,13 +1,11 @@
 <script>
   import Hero from './blocks/Hero.svelte';
-  import FieldMap from './blocks/FieldMap.svelte';
+  import Varieties from './blocks/Varieties.svelte';
   import Weather from './blocks/Weather.svelte';
   import Growth from './blocks/Growth.svelte';
-  import Radar from './blocks/Radar.svelte';
-  import Cards from './blocks/Cards.svelte';
-  import Explain from './blocks/Explain.svelte';
-  import Roadmap from './blocks/Roadmap.svelte';
   import Demo from './blocks/Demo.svelte';
+  import Steps from './blocks/Steps.svelte';
+  import Roadmap from './blocks/Roadmap.svelte';
   import Closing from './blocks/Closing.svelte';
 </script>
 
@@ -20,11 +18,10 @@
 </header>
 
 <main>
-  <Hero /><FieldMap />
-  <Weather /><Growth />
-  <Radar /><Cards />
-  <Explain /><Roadmap />
+  <Hero /><Varieties />
+  <Growth /><Weather />
   <Demo />
+  <Steps /><Roadmap />
   <Closing />
 </main>
 
