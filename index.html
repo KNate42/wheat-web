@@ -3,94 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WheatDDS — решения растут из данных</title>
-  <meta name="description" content="WheatDDS (Wheat Decision Support System) — система поддержки принятия решений для выращивания пшеницы.">
-  <link rel="stylesheet" href="css/style.css">
+  <title>WheatDDS — Wheat Decision Support System</title>
+  <meta name="description" content="WheatDDS — система поддержки принятия решений для выращивания пшеницы.">
+  <meta name="theme-color" content="#3b1c4a">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Unbounded:wght@500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="glow" id="glow" aria-hidden="true"></div>
-
-  <header class="nav">
-    <a class="logo" href="#top"><span class="dot"></span>WheatDDS</a>
-    <nav>
-      <a href="#features">Возможности</a>
-      <a href="#demo">Демо</a>
-      <a href="#flow">Как работает</a>
-      <a href="#roadmap">Статус</a>
-    </nav>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <p class="tag">Wheat Decision Support System · в разработке</p>
-      <h1><span>Решения</span> <span class="alt">растут</span> <span>из данных</span></h1>
-      <p class="lead">Поля, погода, почва → понятные рекомендации для агронома: что делать, когда и почему.</p>
-      <div class="cta">
-        <a class="btn sun" href="#demo">Попробовать демо</a>
-        <a class="btn ghost" href="#roadmap">Что уже готово</a>
-      </div>
-      <div class="field" id="field" aria-hidden="true"></div>
-    </section>
-
-    <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
-
-    <section id="features" class="band teal">
-      <div class="wrap">
-        <h2>Что умеет</h2>
-        <div class="cards">
-          <article class="c1"><i>01</i><h3>Учёт полей</h3><p>Участки, сорта, севооборот, история обработок.</p></article>
-          <article class="c2"><i>02</i><h3>Погода и почва</h3><p>Осадки, температура, влажность, показатели почвы.</p></article>
-          <article class="c3"><i>03</i><h3>Прогноз урожая</h3><p>Оценка по фазам развития и текущим условиям.</p></article>
-          <article class="c4"><i>04</i><h3>Риски болезней</h3><p>Предупреждения и подсказки по срокам обработок.</p></article>
-          <article class="c5"><i>05</i><h3>Удобрения и полив</h3><p>Нормы и сроки на основе данных поля.</p></article>
-          <article class="c6"><i>06</i><h3>Объяснимость</h3><p>У каждой рекомендации — входные данные и логика.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="demo" class="band violet">
-      <div class="wrap demo">
-        <div>
-          <h2>Демо-подсказка</h2>
-          <p class="note">Иллюстрация идеи на упрощённых правилах. Это не агрономическая рекомендация.</p>
-          <label>Влажность почвы: <b id="vm">45</b>%
-            <input type="range" id="moist" min="5" max="95" value="45"></label>
-          <label>Температура воздуха: <b id="vt">18</b>°C
-            <input type="range" id="temp" min="-5" max="40" value="18"></label>
-          <label>Фаза
-            <select id="phase">
-              <option value="sow">Сев / всходы</option>
-              <option value="tiller" selected>Кущение</option>
-              <option value="ear">Колошение</option>
-              <option value="ripe">Созревание</option>
-            </select></label>
-        </div>
-        <div class="result" id="result" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section id="flow" class="band ember">
-      <div class="wrap">
-        <h2>Как это работает</h2>
-        <ol class="flow">
-          <li><b>Данные</b><span>поля · погода · почва</span></li>
-          <li><b>Модели</b><span>прогноз · риски</span></li>
-          <li><b>Рекомендации</b><span>с обоснованием</span></li>
-          <li><b>Агроном</b><span>принимает решение</span></li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="roadmap" class="band lime">
-      <div class="wrap">
-        <h2>Статус разработки</h2>
-        <ul class="roadmap" id="roadmap-list"></ul>
-        <p class="hint">Список правится в <code>js/main.js</code>.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>WheatDDS · Wheat Decision Support System · локальный проект</footer>
-  <script src="js/main.js"></script>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
