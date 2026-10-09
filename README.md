@@ -10,3 +10,5 @@ python3 -m http.server 8000
 ```
 
 Статусы roadmap правятся в `js/main.js`.
+
+Деплой: GitHub Pages через `.github/workflows/pages.yml` — https://knate42.github.io/wheat-web/
