@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WheatDDS — локальный DDS-проект</title>
+  <meta name="description" content="WheatDDS — разрабатываемая реализация Data Distribution Service. Сайт проекта: возможности, быстрый старт, архитектура, статус.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="#top">🌾 WheatDDS</a>
+    <nav>
+      <a href="#features">Возможности</a>
+      <a href="#arch">Архитектура</a>
+      <a href="#quickstart">Быстрый старт</a>
+      <a href="#roadmap">Статус</a>
+      <button id="theme" aria-label="Сменить тему">◐</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="badge">В разработке · v0.1-dev</p>
+      <h1>Pub/Sub без брокера.<br>Быстро. Локально. Своё.</h1>
+      <p class="lead">WheatDDS — реализация Data Distribution Service: участники находят друг друга сами и обмениваются данными по топикам напрямую, без центрального сервера.</p>
+      <div class="cta">
+        <a class="btn primary" href="#quickstart">Быстрый старт</a>
+        <a class="btn" href="#roadmap">Что готово</a>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Возможности</h2>
+      <div class="grid">
+        <article><h3>Децентрализация</h3><p>Никакого брокера: publisher и subscriber работают peer-to-peer.</p></article>
+        <article><h3>Автообнаружение</h3><p>Участники в домене находят друг друга без ручной настройки.</p></article>
+        <article><h3>QoS</h3><p>Reliability, durability, history, deadline — поведение под задачу.</p></article>
+        <article><h3>Типизированные топики</h3><p>Данные описываются типами, а не сырыми байтами.</p></article>
+        <article><h3>Низкая задержка</h3><p>Минимум копирований и аллокаций на горячем пути.</p></article>
+        <article><h3>Локальная разработка</h3><p>Поднимается на одной машине, удобно отлаживать.</p></article>
+      </div>
+    </section>
+
+    <section id="arch">
+      <h2>Архитектура</h2>
+      <div class="diagram" role="img" aria-label="Схема: Publisher, DataWriter, Topic, DataReader, Subscriber в одном домене">
+        <div class="node">Publisher<small>DataWriter</small></div>
+        <div class="arrow">→</div>
+        <div class="node topic">Topic<small>Domain&nbsp;0</small></div>
+        <div class="arrow">→</div>
+        <div class="node">Subscriber<small>DataReader</small></div>
+      </div>
+      <ul class="list">
+        <li><b>DomainParticipant</b> — точка входа в домен.</li>
+        <li><b>Discovery</b> — обмен информацией об участниках и эндпоинтах.</li>
+        <li><b>Transport</b> — доставка данных (UDP / shared memory).</li>
+        <li><b>QoS Engine</b> — применение политик качества сервиса.</li>
+      </ul>
+    </section>
+
+    <section id="quickstart">
+      <h2>Быстрый старт</h2>
+      <p>Пример публикации (псевдокод — API ещё меняется):</p>
+      <div class="code"><button class="copy" data-target="code1">Копировать</button><pre id="code1"><code>auto dp  = wheat::DomainParticipant(0);
+auto top = dp.create_topic&lt;Hello&gt;("hello");
+auto pub = dp.create_publisher().create_writer(top);
+
+pub.write(Hello{"Привет, пшеница!"});</code></pre></div>
+      <p>Подписка:</p>
+      <div class="code"><button class="copy" data-target="code2">Копировать</button><pre id="code2"><code>auto sub = dp.create_subscriber().create_reader(top);
+sub.on_data([](const Hello&amp; m) { std::cout &lt;&lt; m.text; });</code></pre></div>
+    </section>
+
+    <section id="roadmap">
+      <h2>Статус разработки</h2>
+      <ul class="roadmap" id="roadmap-list"></ul>
+      <p class="hint">Список правится в <code>js/main.js</code>.</p>
+    </section>
+  </main>
+
+  <footer>© WheatDDS · локальный проект</footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
